@@ -1,90 +1,142 @@
 const TrustBar = () => {
   const clients = [
-    "NEXORA",
-    "VERTEX",
-    "LUMINA",
-    "ORBITAL",
-    "PULSE",
+    {
+      name: "NEXORA",
+      symbol: "N",
+    },
+    {
+      name: "LUMINA",
+      symbol: "L",
+    },
+    {
+      name: "VERTEX",
+      symbol: "V",
+    },
+    {
+      name: "ORBITAL",
+      symbol: "O",
+    },
+    {
+      name: "MOSAIC",
+      symbol: "M",
+    },
+  ];
+
+  const stats = [
+    {
+      value: "150+",
+      label: "Businesses Scaled",
+    },
+    {
+      value: "₹12Cr+",
+      label: "Revenue Influenced",
+    },
+    {
+      value: "3.2×",
+      label: "Average ROAS",
+    },
+    {
+      value: "94%",
+      label: "Client Retention",
+    },
   ];
 
   return (
     <section
       id="trust"
-      className="border-b border-white/10 bg-black"
+      className="relative overflow-hidden border-y border-white/[0.06] bg-[#080808]"
     >
-      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-6 lg:px-8">
-        
-        {/* Trust Header */}
+      {/* Subtle Orange Glow */}
+      <div className="pointer-events-none absolute left-1/2 top-0 h-40 w-[500px] -translate-x-1/2 rounded-full bg-orange-500/[0.04] blur-[100px]" />
+
+      <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+
+        {/* Trust Heading */}
         <div className="text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/35 sm:text-sm">
+
+          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/25 sm:text-xs">
             Trusted by ambitious businesses
           </p>
+
+          <div className="mx-auto mt-3 h-px w-8 bg-orange-500/60" />
+
         </div>
 
         {/* Client Logos */}
-        <div className="mt-8 grid grid-cols-2 items-center gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+
           {clients.map((client) => (
             <div
-              key={client}
-              className="flex h-10 items-center justify-center"
+              key={client.name}
+              className="group flex h-16 items-center justify-center gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.015] px-4 transition-all duration-300 hover:border-orange-500/20 hover:bg-orange-500/[0.03]"
             >
-              <span className="text-sm font-bold tracking-[0.18em] text-white/25 transition-colors duration-200 hover:text-white/50 sm:text-base">
-                {client}
+
+              {/* Logo Symbol */}
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-[10px] font-bold text-white/40 transition-colors duration-300 group-hover:border-orange-500/20 group-hover:bg-orange-500/10 group-hover:text-orange-400">
+                {client.symbol}
+              </div>
+
+              {/* Company Name */}
+              <span className="text-xs font-semibold tracking-[0.12em] text-white/30 transition-colors duration-300 group-hover:text-white/60">
+                {client.name}
               </span>
+
             </div>
           ))}
+
         </div>
 
-        {/* Metrics */}
-        <div className="mt-10 border-t border-white/10 pt-8">
-          <div className="grid grid-cols-2 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-white/10">
+        {/* Divider */}
+        <div className="my-12 h-px bg-white/[0.06] sm:my-14" />
 
-            {/* Metric 1 */}
-            <div className="text-center sm:px-6">
-              <p className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                150+
+        {/* Stats */}
+        <div className="grid grid-cols-2 divide-x divide-white/[0.07] lg:grid-cols-4">
+
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={`px-4 text-center sm:px-6 ${
+                index >= 2 ? "mt-8 lg:mt-0" : ""
+              }`}
+            >
+
+              {/* Value */}
+              <p className="text-2xl font-semibold tracking-[-0.03em] text-white sm:text-3xl lg:text-4xl">
+                {stat.value}
               </p>
 
-              <p className="mt-1 text-xs text-white/40 sm:text-sm">
-                Businesses scaled
+              {/* Orange Indicator */}
+              <div className="mx-auto mt-2 h-1 w-5 rounded-full bg-orange-500/70" />
+
+              {/* Label */}
+              <p className="mt-3 text-[10px] leading-5 text-white/30 sm:text-xs">
+                {stat.label}
               </p>
+
             </div>
+          ))}
 
-            {/* Metric 2 */}
-            <div className="text-center sm:px-6">
-              <p className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                ₹12Cr+
-              </p>
+        </div>
 
-              <p className="mt-1 text-xs text-white/40 sm:text-sm">
-                Revenue influenced
-              </p>
-            </div>
+        {/* Bottom Trust Statement */}
+        <div className="mt-12 flex flex-col items-center justify-center gap-3 text-center sm:mt-14 sm:flex-row sm:gap-4">
 
-            {/* Metric 3 */}
-            <div className="text-center sm:px-6">
-              <p className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                3.2×
-              </p>
-
-              <p className="mt-1 text-xs text-white/40 sm:text-sm">
-                Average ROAS
-              </p>
-            </div>
-
-            {/* Metric 4 */}
-            <div className="text-center sm:px-6">
-              <p className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                94%
-              </p>
-
-              <p className="mt-1 text-xs text-white/40 sm:text-sm">
-                Client retention
-              </p>
-            </div>
-
+          <div className="flex items-center gap-1">
+            <span className="text-xs text-orange-400">★★★★★</span>
           </div>
+
+          <span className="text-xs text-white/30">
+            4.9/5 average client satisfaction
+          </span>
+
+          <span className="hidden h-1 w-1 rounded-full bg-white/15 sm:block" />
+
+          <span className="text-xs text-white/25">
+            Results backed by data, not vanity metrics.
+          </span>
+
         </div>
+
       </div>
     </section>
   );

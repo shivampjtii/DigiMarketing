@@ -1,112 +1,199 @@
 const CaseStudyCard = ({ study, featured = false }) => {
+  if (!study) return null;
+
   return (
     <article
-      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] transition-all duration-300 hover:border-white/20 hover:bg-white/[0.045] ${
-        featured ? "p-6 sm:p-8 lg:p-10" : "p-6 sm:p-7 lg:p-8"
+      className={`group relative overflow-hidden rounded-3xl border ${
+        featured
+          ? "border-orange-500/20 bg-[#0A0A0A]"
+          : "border-white/[0.07] bg-[#090909]"
       }`}
     >
-      {/* Top Row */}
-      <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-orange-500/[0.08] blur-[110px]" />
 
-        {/* Brand / Category */}
-        <div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05]">
-              <span className="text-sm font-bold text-white/70">
-                {study.logo || study.company?.charAt(0)}
-              </span>
+      <div className="relative grid lg:grid-cols-[1.15fr_0.85fr]">
+
+        {/* =========================================
+            LEFT CONTENT
+        ========================================== */}
+
+        <div className="border-b border-white/[0.07] p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-10 xl:p-12">
+
+          {/* Company Header */}
+          <div className="flex flex-wrap items-center justify-between gap-4">
+
+            <div className="flex items-center gap-3">
+
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-orange-500/20 bg-orange-500/[0.08] text-sm font-bold text-orange-400">
+                {study.logo}
+              </div>
+
+              <div>
+                <p className="text-sm font-semibold text-white">
+                  {study.company}
+                </p>
+
+                <p className="mt-0.5 text-[10px] text-white/30">
+                  {study.industry}
+                </p>
+              </div>
+
             </div>
 
-            <div>
-              <p className="text-sm font-semibold text-white">
-                {study.company}
-              </p>
+            <span className="rounded-full border border-orange-500/15 bg-orange-500/[0.05] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-orange-300">
+              {study.category}
+            </span>
 
-              <p className="mt-0.5 text-xs text-white/35">
-                {study.category}
-              </p>
-            </div>
           </div>
-        </div>
 
-        {/* Industry */}
-        <span className="w-fit rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-[11px] font-medium text-white/45">
-          {study.industry}
-        </span>
-
-      </div>
-
-      {/* Main Content */}
-      <div
-        className={`mt-10 grid gap-10 ${
-          featured
-            ? "lg:grid-cols-[1fr_0.9fr]"
-            : "lg:grid-cols-[1fr_1fr]"
-        } lg:items-end`}
-      >
-
-        {/* Challenge / Strategy */}
-        <div>
-
-          <span className="text-xs font-medium uppercase tracking-[0.16em] text-white/25">
-            The challenge
-          </span>
-
-          <h3
-            className={`mt-4 max-w-2xl font-semibold leading-tight tracking-tight text-white ${
-              featured
-                ? "text-2xl sm:text-3xl"
-                : "text-xl sm:text-2xl"
-            }`}
-          >
+          {/* Title */}
+          <h3 className="mt-10 max-w-2xl text-2xl font-semibold leading-[1.1] tracking-[-0.035em] text-white sm:text-3xl lg:text-4xl">
             {study.title}
           </h3>
 
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/40 sm:text-base sm:leading-7">
+          {/* Description */}
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-white/40 sm:text-base">
             {study.description}
           </p>
 
           {/* Strategy */}
-          {study.strategy && (
-            <div className="mt-7 border-l border-white/15 pl-4">
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-white/25">
+          <div className="mt-8 rounded-2xl border border-white/[0.06] bg-white/[0.015] p-5">
+
+            <div className="flex items-center gap-2">
+
+              <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-500/[0.10] text-[10px] text-orange-400">
+                ↗
+              </span>
+
+              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-orange-300">
                 Strategy
-              </p>
+              </span>
 
-              <p className="mt-2 text-sm leading-6 text-white/55">
-                {study.strategy}
-              </p>
             </div>
-          )}
 
-        </div>
-
-        {/* Results */}
-        <div className="rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6">
-
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <p className="text-xs font-medium uppercase tracking-[0.14em] text-white/30">
-              Results
+            <p className="mt-3 text-sm leading-6 text-white/45">
+              {study.strategy}
             </p>
 
-            <span className="text-xs text-white/25">
-              {study.duration || "90 days"}
-            </span>
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-5">
+          {/* Services */}
+          <div className="mt-7">
 
-            {study.results?.map((result) => (
-              <div key={result.label}>
-                <p className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                  {result.value}
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/25">
+              Services delivered
+            </p>
+
+            <div className="mt-3 flex flex-wrap gap-2">
+
+              {study.services?.map((service) => (
+                <span
+                  key={service}
+                  className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[10px] text-white/40 transition-colors duration-200 hover:border-orange-500/20 hover:text-orange-300"
+                >
+                  {service}
+                </span>
+              ))}
+
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* =========================================
+            RIGHT RESULTS
+        ========================================== */}
+
+        <div className="relative flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12">
+
+          {/* Results Header */}
+          <div>
+
+            <div className="flex items-center justify-between">
+
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-400">
+                  The results
                 </p>
 
-                <p className="mt-1 text-xs leading-5 text-white/35">
-                  {result.label}
+                <h4 className="mt-2 text-lg font-semibold tracking-tight text-white">
+                  Measurable impact
+                </h4>
+              </div>
+
+              <div className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[10px] text-white/30">
+                {study.duration}
+              </div>
+
+            </div>
+
+            {/* Result Grid */}
+            <div className="mt-8 grid grid-cols-2 gap-3">
+
+              {study.results?.map((result, index) => (
+                <div
+                  key={result.label}
+                  className="group/result rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4 transition-all duration-300 hover:border-orange-500/20 hover:bg-orange-500/[0.03] sm:p-5"
+                >
+
+                  <div className="flex items-start justify-between gap-2">
+
+                    <span className="text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
+                      {result.value}
+                    </span>
+
+                    <span className="text-[9px] font-medium text-orange-500/50">
+                      0{index + 1}
+                    </span>
+
+                  </div>
+
+                  <p className="mt-2 text-[10px] leading-4 text-white/30 sm:text-xs">
+                    {result.label}
+                  </p>
+
+                  <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/[0.05]">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-300 transition-all duration-500 group-hover/result:w-full"
+                      style={{
+                        width: `${Math.min(
+                          35 + index * 15,
+                          85
+                        )}%`,
+                      }}
+                    />
+                  </div>
+
+                </div>
+              ))}
+
+            </div>
+
+          </div>
+
+          {/* Bottom Result Statement */}
+          <div className="mt-8 border-t border-white/[0.07] pt-6">
+
+            <div className="flex items-start gap-3">
+
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-orange-500/[0.08] text-sm text-orange-400">
+                ✓
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-white/65">
+                  Growth backed by data
+                </p>
+
+                <p className="mt-1 text-[10px] leading-5 text-white/25">
+                  Every result is tracked against meaningful business
+                  objectives and performance indicators.
                 </p>
               </div>
-            ))}
+
+            </div>
 
           </div>
 
@@ -114,37 +201,8 @@ const CaseStudyCard = ({ study, featured = false }) => {
 
       </div>
 
-      {/* Bottom Row */}
-      <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
-
-        {/* Services Used */}
-        <div className="flex flex-wrap gap-2">
-          {study.services?.map((service) => (
-            <span
-              key={service}
-              className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[11px] text-white/40"
-            >
-              {service}
-            </span>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <a
-          href="#contact"
-          className="group/cta inline-flex w-fit items-center gap-2 text-sm font-semibold text-white"
-        >
-          View case study
-
-          <span className="text-white/35 transition-all duration-200 group-hover/cta:translate-x-1 group-hover/cta:text-white">
-            →
-          </span>
-        </a>
-
-      </div>
-
-      {/* Decorative Element */}
-      <div className="pointer-events-none absolute -right-24 -top-24 h-48 w-48 rounded-full bg-white/[0.025] blur-3xl transition-all duration-500 group-hover:bg-white/[0.05]" />
+      {/* Bottom Accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
     </article>
   );
 };

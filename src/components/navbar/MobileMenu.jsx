@@ -1,41 +1,69 @@
-const MobileMenu = ({ isOpen, navLinks, onClose }) => {
-  return (
-    <div
-      className={`lg:hidden overflow-hidden border-t border-white/10 bg-black/95 backdrop-blur-xl transition-all duration-300 ease-in-out ${
-        isOpen
-          ? "max-h-[500px] opacity-100"
-          : "max-h-0 opacity-0"
-      }`}
-    >
-      <div className="mx-auto max-w-7xl px-5 py-6 sm:px-6">
-        <div className="flex flex-col">
+const MobileMenu = ({ isOpen, onClose, navLinks }) => {
+  if (!isOpen) {
+    return null;
+  }
 
-          {/* Navigation Links */}
+  return (
+    <div className="relative mt-2 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#080808]/95 shadow-2xl shadow-black/40 backdrop-blur-xl lg:hidden">
+
+      {/* Orange Glow */}
+      <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-orange-500/[0.10] blur-3xl" />
+
+      <div className="relative p-3">
+
+        {/* Navigation Links */}
+        <div className="space-y-1">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={onClose}
-              className="group flex items-center justify-between border-b border-white/10 py-4 text-sm font-medium text-white/70 transition-colors duration-200 hover:text-white"
+              className="group flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-medium text-white/60 transition-all duration-200 hover:bg-orange-500/[0.06] hover:text-white"
             >
               <span>{link.name}</span>
 
-              <span className="text-white/30 transition-all duration-200 group-hover:translate-x-1 group-hover:text-white">
+              <span className="translate-x-[-4px] text-orange-400 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
                 →
               </span>
             </a>
           ))}
 
-          {/* Mobile CTA */}
+          {/* Resources */}
           <a
-            href="#contact"
+            href="#faq"
             onClick={onClose}
-            className="mt-6 flex items-center justify-center rounded-full bg-white px-5 py-3.5 text-sm font-semibold text-black transition-all duration-200 hover:bg-white/90 active:scale-[0.98]"
+            className="group flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-medium text-white/60 transition-all duration-200 hover:bg-orange-500/[0.06] hover:text-white"
           >
-            Get Started
-          </a>
+            <span>Resources</span>
 
+            <span className="translate-x-[-4px] text-orange-400 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+              →
+            </span>
+          </a>
         </div>
+
+        {/* Divider */}
+        <div className="my-3 h-px bg-white/[0.07]" />
+
+        {/* CTA */}
+        <a
+          href="#contact"
+          onClick={onClose}
+          className="group flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/10 transition-all duration-200 hover:bg-orange-400 hover:shadow-orange-500/20 active:scale-[0.98]"
+        >
+          Start a Project
+
+          <span className="transition-transform duration-200 group-hover:translate-x-1">
+            →
+          </span>
+        </a>
+
+        {/* Bottom Message */}
+        <div className="mt-4 flex items-center justify-center gap-2 pb-1 text-[11px] text-white/25">
+          <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+          Let's grow something meaningful.
+        </div>
+
       </div>
     </div>
   );

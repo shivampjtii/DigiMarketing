@@ -3,203 +3,242 @@ const Results = () => {
     {
       value: "+184%",
       label: "Qualified Leads",
-      description: "Average increase in qualified inbound leads.",
+      description: "Average increase in qualified opportunities generated.",
     },
     {
       value: "3.2×",
       label: "Average ROAS",
-      description: "More revenue generated from every ad investment.",
+      description: "Average return generated across performance campaigns.",
     },
     {
       value: "-32%",
       label: "Acquisition Cost",
-      description: "Lower customer acquisition costs through optimization.",
+      description: "Average reduction in customer acquisition costs.",
     },
     {
       value: "+72%",
       label: "Organic Traffic",
-      description: "Average growth in high-intent organic traffic.",
+      description: "Average increase in organic search visibility.",
+    },
+  ];
+
+  const performanceAreas = [
+    {
+      label: "Lead Generation",
+      value: 84,
+    },
+    {
+      label: "Brand Visibility",
+      value: 76,
+    },
+    {
+      label: "Conversion Rate",
+      value: 68,
+    },
+    {
+      label: "Marketing Efficiency",
+      value: 91,
     },
   ];
 
   return (
     <section
       id="results"
-      className="relative overflow-hidden border-b border-white/10 bg-black"
+      className="relative overflow-hidden border-b border-white/[0.06] bg-[#080808]"
     >
-      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+      {/* Background Orange Glow */}
+      <div className="pointer-events-none absolute left-1/2 top-0 h-80 w-[600px] -translate-x-1/2 rounded-full bg-orange-500/[0.045] blur-[130px]" />
+
+      <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
 
         {/* Header */}
-        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+        <div className="mx-auto max-w-3xl text-center">
 
-          <div>
-            <span className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium uppercase tracking-[0.16em] text-white/45">
-              Performance
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/[0.06] px-3.5 py-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+
+            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-300 sm:text-xs">
+              Results that matter
             </span>
-
-            <h2 className="mt-5 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl">
-              We measure success by{" "}
-              <span className="text-white/40">
-                what moves your business.
-              </span>
-            </h2>
           </div>
 
-          <p className="max-w-xl text-base leading-7 text-white/45 sm:text-lg sm:leading-8 lg:ml-auto">
-            Vanity metrics don't pay the bills. We focus on the numbers that
-            matter — qualified demand, revenue, acquisition efficiency, and
-            sustainable growth.
+          <h2 className="mt-5 text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
+            We don't chase
+            <span className="text-white/35"> vanity metrics.</span>
+            <span className="block bg-gradient-to-r from-orange-300 via-orange-500 to-orange-300 bg-clip-text text-transparent">
+              We build business results.
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/40 sm:text-lg sm:leading-8">
+            Every strategy is connected to measurable business outcomes —
+            from qualified leads and revenue to acquisition efficiency and
+            long-term visibility.
           </p>
 
         </div>
 
-        {/* Results Dashboard */}
-        <div className="mt-14 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] lg:mt-20">
+        {/* Main Metrics */}
+        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.07] sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
 
-          {/* Dashboard Header */}
-          <div className="flex flex-col gap-4 border-b border-white/10 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7 lg:px-8">
+          {results.map((result, index) => (
+            <div
+              key={result.label}
+              className="group relative bg-[#0A0A0A] p-6 transition-colors duration-300 hover:bg-[#0D0D0D] sm:p-7 lg:p-8"
+            >
 
-            <div>
-              <p className="text-sm font-medium text-white">
-                Growth performance
-              </p>
+              {/* Orange top line */}
+              <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-              <p className="mt-1 text-xs text-white/35">
-                Aggregated results across campaigns
-              </p>
-            </div>
+              {/* Number */}
+              <div className="flex items-start justify-between">
 
-            <div className="flex w-fit items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-white" />
-
-              <span className="text-[11px] text-white/45">
-                Performance above target
-              </span>
-            </div>
-
-          </div>
-
-          {/* Metrics */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
-            {results.map((result, index) => (
-              <div
-                key={result.label}
-                className={`p-6 sm:p-7 lg:p-8 ${
-                  index !== results.length - 1
-                    ? "border-b border-white/10 sm:border-r"
-                    : ""
-                } ${
-                  index === 1
-                    ? "lg:border-b-0"
-                    : ""
-                } ${
-                  index === 2
-                    ? "sm:border-b-0"
-                    : ""
-                }`}
-              >
-                <p className="text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
+                <p className="text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
                   {result.value}
                 </p>
 
-                <p className="mt-4 text-sm font-medium text-white">
-                  {result.label}
-                </p>
+                <span className="text-[10px] font-medium text-orange-400/60">
+                  0{index + 1}
+                </span>
 
-                <p className="mt-2 max-w-xs text-sm leading-6 text-white/35">
-                  {result.description}
-                </p>
-
-                {/* Progress indicator */}
-                <div className="mt-6 h-1 overflow-hidden rounded-full bg-white/10">
-                  <div
-                    className="h-full rounded-full bg-white/50"
-                    style={{
-                      width: `${[84, 72, 68, 78][index]}%`,
-                    }}
-                  />
-                </div>
               </div>
-            ))}
-          </div>
+
+              {/* Label */}
+              <p className="mt-4 text-sm font-semibold text-white/70">
+                {result.label}
+              </p>
+
+              {/* Description */}
+              <p className="mt-2 text-xs leading-5 text-white/30">
+                {result.description}
+              </p>
+
+              {/* Accent */}
+              <div className="mt-6 h-1 w-8 overflow-hidden rounded-full bg-white/[0.06]">
+                <div className="h-full w-full rounded-full bg-orange-500/70" />
+              </div>
+
+            </div>
+          ))}
+
         </div>
 
-        {/* Bottom Insight */}
-        <div className="mt-5 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+        {/* Performance Overview */}
+        <div className="mt-4 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0A0A0A] lg:mt-5">
 
-          {/* Main Statement */}
-          <div className="rounded-3xl border border-white/10 bg-white/[0.025] p-6 sm:p-8">
+          <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
 
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04]">
-              <span className="text-sm text-white/60">
-                ↗
-              </span>
-            </div>
+            {/* Left Content */}
+            <div className="relative overflow-hidden border-b border-white/[0.07] p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
 
-            <h3 className="mt-7 max-w-2xl text-2xl font-semibold leading-tight tracking-tight text-white sm:text-3xl">
-              Better marketing starts with better decisions.
-            </h3>
+              <div className="pointer-events-none absolute -bottom-20 -right-20 h-48 w-48 rounded-full bg-orange-500/[0.07] blur-3xl" />
 
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-white/40 sm:text-base sm:leading-7">
-              Every campaign is continuously measured, tested, and refined so
-              your marketing budget moves toward the channels and audiences
-              that create the greatest business impact.
-            </p>
+              <div className="relative">
 
-          </div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-400">
+                  Performance snapshot
+                </p>
 
-          {/* Insight Card */}
-          <div className="rounded-3xl border border-white/10 bg-white/[0.025] p-6 sm:p-8">
+                <h3 className="mt-4 max-w-sm text-2xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-3xl">
+                  Turning marketing investment into measurable momentum.
+                </h3>
 
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/30">
-              Our focus
-            </p>
+                <p className="mt-4 max-w-md text-sm leading-6 text-white/35">
+                  We continuously track the metrics that influence your
+                  pipeline, revenue, and customer acquisition efficiency.
+                </p>
 
-            <div className="mt-6 space-y-4">
+                <div className="mt-7 flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500/[0.08] text-sm text-orange-400">
+                    ↗
+                  </div>
 
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="text-sm text-white/50">
-                  Acquisition
-                </span>
+                  <div>
+                    <p className="text-xs font-medium text-white/60">
+                      Data-backed decisions
+                    </p>
 
-                <span className="text-sm font-medium text-white">
-                  More qualified
-                </span>
-              </div>
+                    <p className="mt-0.5 text-[10px] text-white/25">
+                      Optimized continuously
+                    </p>
+                  </div>
+                </div>
 
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="text-sm text-white/50">
-                  Conversion
-                </span>
-
-                <span className="text-sm font-medium text-white">
-                  Higher intent
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="text-sm text-white/50">
-                  Efficiency
-                </span>
-
-                <span className="text-sm font-medium text-white">
-                  Lower CAC
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-white/50">
-                  Growth
-                </span>
-
-                <span className="text-sm font-medium text-white">
-                  Sustainable
-                </span>
               </div>
 
             </div>
 
+            {/* Progress Metrics */}
+            <div className="p-6 sm:p-8 lg:p-10">
+
+              <div className="space-y-7">
+
+                {performanceAreas.map((area) => (
+                  <div key={area.label}>
+
+                    <div className="flex items-center justify-between">
+
+                      <span className="text-xs font-medium text-white/50">
+                        {area.label}
+                      </span>
+
+                      <span className="text-xs font-semibold text-white/70">
+                        {area.value}%
+                      </span>
+
+                    </div>
+
+                    <div className="mt-2.5 h-2 overflow-hidden rounded-full bg-white/[0.05]">
+
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-orange-600 via-orange-500 to-orange-300"
+                        style={{
+                          width: `${area.value}%`,
+                        }}
+                      />
+
+                    </div>
+
+                  </div>
+                ))}
+
+              </div>
+
+              {/* Bottom note */}
+              <div className="mt-8 flex items-center gap-2 border-t border-white/[0.06] pt-5">
+
+                <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+
+                <p className="text-[10px] text-white/25">
+                  Performance varies by industry, market, and campaign
+                  objectives.
+                </p>
+
+              </div>
+
+            </div>
+
           </div>
+
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-12 flex flex-col items-center text-center sm:mt-14">
+
+          <p className="text-sm text-white/30">
+            Your numbers can tell a better story.
+          </p>
+
+          <a
+            href="#case-studies"
+            className="group mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-orange-300"
+          >
+            See how we create results
+
+            <span className="text-orange-400 transition-transform duration-200 group-hover:translate-x-1">
+              →
+            </span>
+          </a>
 
         </div>
 

@@ -1,72 +1,118 @@
-const ServiceCard = ({
-  number,
-  icon,
-  title,
-  description,
-  benefits = [],
-  cta = "Explore Service",
-}) => {
+const ServiceCard = ({ service, active = false }) => {
+  if (!service) return null;
+
   return (
-    <article className="group relative flex h-full min-h-[440px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-6 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.045] sm:p-7 lg:p-8">
+    <article
+      className={`group relative flex h-full min-h-[430px] flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 sm:p-7 lg:p-8 ${
+        active
+          ? "border-orange-500/30 bg-[#0D0B09] shadow-2xl shadow-orange-950/20"
+          : "border-white/[0.07] bg-[#090909] hover:border-orange-500/20 hover:bg-[#0C0C0C]"
+      }`}
+    >
+      {/* Background Orange Glow */}
+      <div
+        className={`pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-orange-500/[0.08] blur-[80px] transition-opacity duration-500 ${
+          active
+            ? "opacity-100"
+            : "opacity-0 group-hover:opacity-100"
+        }`}
+      />
 
-      {/* Top */}
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-medium tracking-[0.16em] text-white/25">
-          {number}
-        </span>
+      {/* Subtle Bottom Gradient */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-orange-500/[0.025] to-transparent" />
 
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-lg text-white/70 transition-all duration-300 group-hover:border-white/20 group-hover:bg-white/[0.08]">
-          {icon}
-        </div>
-      </div>
+      <div className="relative flex h-full flex-col">
 
-      {/* Content */}
-      <div className="mt-12">
-        <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-          {title}
-        </h3>
+        {/* Top Row */}
+        <div className="flex items-center justify-between">
 
-        <p className="mt-4 max-w-lg text-sm leading-6 text-white/45 sm:text-base sm:leading-7">
-          {description}
-        </p>
-      </div>
-
-      {/* Benefits */}
-      <div className="mt-7 space-y-3">
-        {benefits.map((benefit, index) => (
-          <div
-            key={index}
-            className="flex items-start gap-3"
+          {/* Number */}
+          <span
+            className={`text-xs font-semibold tracking-[0.16em] ${
+              active ? "text-orange-400" : "text-orange-500/60"
+            }`}
           >
-            <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-[9px] text-white/70">
-              ✓
-            </span>
-
-            <span className="text-sm text-white/55">
-              {benefit}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {/* Bottom */}
-      <div className="mt-auto pt-8">
-        <div className="mb-5 h-px w-full bg-white/10" />
-
-        <a
-          href="#contact"
-          className="group/cta inline-flex items-center gap-2 text-sm font-semibold text-white"
-        >
-          {cta}
-
-          <span className="text-white/40 transition-all duration-200 group-hover/cta:translate-x-1 group-hover/cta:text-white">
-            →
+            {service.number}
           </span>
-        </a>
-      </div>
 
-      {/* Decorative Glow */}
-      <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-white/[0.03] blur-3xl transition-all duration-500 group-hover:bg-white/[0.06]" />
+          {/* Icon */}
+          <div
+            className={`flex h-12 w-12 items-center justify-center rounded-2xl border text-lg transition-all duration-300 ${
+              active
+                ? "border-orange-500/25 bg-orange-500/10 text-orange-400"
+                : "border-white/[0.08] bg-white/[0.025] text-white/40 group-hover:border-orange-500/20 group-hover:bg-orange-500/[0.08] group-hover:text-orange-400"
+            }`}
+          >
+            {service.icon}
+          </div>
+        </div>
+
+        {/* Title */}
+        <div className="mt-9">
+          <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white sm:text-3xl">
+            {service.title}
+          </h3>
+
+          <p className="mt-4 max-w-md text-sm leading-6 text-white/40 sm:text-[15px]">
+            {service.description}
+          </p>
+        </div>
+
+        {/* Benefits */}
+        <div className="mt-7 space-y-3">
+          {service.benefits?.map((benefit) => (
+            <div
+              key={benefit}
+              className="flex items-start gap-3"
+            >
+              <span
+                className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] ${
+                  active
+                    ? "bg-orange-500/15 text-orange-400"
+                    : "bg-white/[0.05] text-orange-500/70"
+                }`}
+              >
+                ✓
+              </span>
+
+              <span className="text-xs leading-5 text-white/45">
+                {benefit}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Spacer */}
+        <div className="flex-1" />
+
+        {/* Bottom */}
+        <div className="mt-8 border-t border-white/[0.07] pt-5">
+
+          <a
+            href="#contact"
+            className="group/link inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-orange-300"
+          >
+            {service.cta || "Explore Service"}
+
+            <span className="text-orange-400 transition-transform duration-200 group-hover/link:translate-x-1">
+              →
+            </span>
+          </a>
+
+          {/* Progress Accent */}
+          <div className="mt-5 h-1 overflow-hidden rounded-full bg-white/[0.05]">
+            <div
+              className={`h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-300 transition-all duration-500 ${
+                active
+                  ? "w-2/3"
+                  : "w-1/4 group-hover:w-2/3"
+              }`}
+            />
+          </div>
+
+        </div>
+
+      </div>
     </article>
   );
 };

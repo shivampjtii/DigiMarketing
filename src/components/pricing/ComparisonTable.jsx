@@ -1,172 +1,305 @@
-import { pricingPlans } from "../../data/pricing";
+import React from "react";
 
 const ComparisonTable = () => {
-  const comparisonFeatures = [
+  const plans = [
+    "Brand Kickstart",
+    "Growth Engine",
+    "Revenue Accelerator",
+    "Infinity Enterprise",
+  ];
+
+  const comparisonRows = [
     {
-      name: "Marketing Strategy",
-      values: [true, true, true, true],
+      category: "Strategy",
+      items: [
+        {
+          name: "Digital Marketing Strategy",
+          values: [true, true, true, true],
+        },
+        {
+          name: "Competitor Analysis",
+          values: [true, true, true, true],
+        },
+        {
+          name: "Custom Growth Roadmap",
+          values: [false, true, true, true],
+        },
+        {
+          name: "Dedicated Growth Strategist",
+          values: [false, true, true, true],
+        },
+      ],
     },
     {
-      name: "SEO Optimization",
-      values: [true, true, true, true],
+      category: "SEO",
+      items: [
+        {
+          name: "Technical SEO",
+          values: ["Basic", "Advanced", "Advanced", "Enterprise"],
+        },
+        {
+          name: "Keyword Research",
+          values: [true, true, true, true],
+        },
+        {
+          name: "Content Optimization",
+          values: [true, true, true, true],
+        },
+        {
+          name: "Enterprise SEO",
+          values: [false, false, false, true],
+        },
+      ],
     },
     {
-      name: "Social Media Marketing",
-      values: [true, true, true, true],
+      category: "Paid Advertising",
+      items: [
+        {
+          name: "Google Ads",
+          values: [false, true, true, true],
+        },
+        {
+          name: "Meta Ads",
+          values: [false, true, true, true],
+        },
+        {
+          name: "Advanced Paid Acquisition",
+          values: [false, false, true, true],
+        },
+        {
+          name: "Multi-Channel Campaigns",
+          values: [false, false, true, true],
+        },
+      ],
     },
     {
-      name: "Content Creation",
-      values: [true, true, true, true],
+      category: "Content & Social",
+      items: [
+        {
+          name: "Social Media Management",
+          values: [true, true, true, true],
+        },
+        {
+          name: "Content Creation",
+          values: ["Basic", true, true, true],
+        },
+        {
+          name: "Brand Content Strategy",
+          values: [false, true, true, true],
+        },
+        {
+          name: "Creative Campaigns",
+          values: [false, false, true, true],
+        },
+      ],
     },
     {
-      name: "Paid Advertising",
-      values: [false, true, true, true],
+      category: "Conversion & Analytics",
+      items: [
+        {
+          name: "Conversion Optimization",
+          values: [false, true, true, true],
+        },
+        {
+          name: "Performance Reporting",
+          values: [true, true, true, true],
+        },
+        {
+          name: "Marketing Attribution",
+          values: [false, false, true, true],
+        },
+        {
+          name: "Custom Analytics Dashboard",
+          values: [false, false, false, true],
+        },
+      ],
     },
     {
-      name: "Conversion Optimization",
-      values: [false, true, true, true],
-    },
-    {
-      name: "Advanced Analytics",
-      values: [false, true, true, true],
-    },
-    {
-      name: "Dedicated Account Manager",
-      values: [false, false, true, true],
-    },
-    {
-      name: "Custom Campaign Strategy",
-      values: [false, false, true, true],
-    },
-    {
-      name: "Priority Support",
-      values: [false, false, true, true],
-    },
-    {
-      name: "Enterprise Solutions",
-      values: [false, false, false, true],
-    },
-    {
-      name: "Dedicated Growth Team",
-      values: [false, false, false, true],
+      category: "Support",
+      items: [
+        {
+          name: "Monthly Strategy Review",
+          values: [true, true, false, false],
+        },
+        {
+          name: "Bi-Weekly Strategy Review",
+          values: [false, false, true, true],
+        },
+        {
+          name: "Priority Support",
+          values: [false, false, true, true],
+        },
+        {
+          name: "Custom Integrations",
+          values: [false, false, false, true],
+        },
+      ],
     },
   ];
+
+  const renderValue = (value) => {
+    if (value === true) {
+      return (
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500/10 text-xs font-semibold text-orange-400">
+          ✓
+        </span>
+      );
+    }
+
+    if (value === false) {
+      return (
+        <span className="text-sm text-white/15">
+          —
+        </span>
+      );
+    }
+
+    return (
+      <span className="rounded-md border border-white/[0.07] bg-white/[0.025] px-2 py-1 text-[9px] font-medium text-white/40">
+        {value}
+      </span>
+    );
+  };
 
   return (
     <section
       id="comparison"
-      className="relative overflow-hidden border-b border-white/10 bg-black"
+      className="relative overflow-hidden border-b border-white/[0.06] bg-[#050505]"
     >
-      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute left-1/2 top-0 h-80 w-[600px] -translate-x-1/2 rounded-full bg-orange-500/[0.035] blur-[130px]" />
+
+      <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
 
         {/* Header */}
-        <div className="max-w-2xl">
-          <span className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium uppercase tracking-[0.16em] text-white/45">
-            Compare plans
-          </span>
+        <div className="mx-auto max-w-3xl text-center">
 
-          <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-4xl">
-            Find the right level of{" "}
-            <span className="text-white/40">
-              support for your growth.
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/[0.06] px-3.5 py-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+
+            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-300 sm:text-xs">
+              Compare plans
+            </span>
+          </div>
+
+          <h2 className="mt-5 text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
+            See exactly what's
+            <span className="block bg-gradient-to-r from-orange-300 via-orange-500 to-orange-300 bg-clip-text text-transparent">
+              included in every plan.
             </span>
           </h2>
 
-          <p className="mt-5 max-w-xl text-base leading-7 text-white/45">
-            Compare what's included in each plan and choose the capabilities
-            that match your current growth stage.
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/40 sm:text-lg sm:leading-8">
+            Compare services, support, strategy, and performance capabilities
+            side by side before choosing the right growth partner.
           </p>
+
         </div>
 
-        {/* Mobile Scroll Hint */}
-        <div className="mt-8 flex items-center gap-2 text-xs text-white/30 lg:hidden">
-          <span>←</span>
-          <span>Swipe to compare plans</span>
-          <span>→</span>
-        </div>
+        {/* Comparison Table */}
+        <div className="mt-12 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#090909] shadow-2xl shadow-black/20 sm:mt-14">
 
-        {/* Table */}
-        <div className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] sm:mt-8">
-
+          {/* Horizontal Scroll Container */}
           <div className="overflow-x-auto">
 
-            <table className="w-full min-w-[850px] border-collapse text-left">
+            <table className="w-full min-w-[900px] border-collapse">
 
               {/* Table Header */}
               <thead>
-                <tr className="border-b border-white/10">
 
-                  {/* Feature Column */}
-                  <th className="sticky left-0 z-10 min-w-[250px] bg-[#050505] px-5 py-5 text-xs font-medium uppercase tracking-[0.14em] text-white/35 sm:px-6">
-                    Features
+                <tr className="border-b border-white/[0.07]">
+
+                  <th className="sticky left-0 z-10 w-[280px] bg-[#090909] px-5 py-5 text-left sm:px-6">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/25">
+                      Features
+                    </span>
                   </th>
 
-                  {/* Plan Columns */}
-                  {pricingPlans.map((plan) => (
+                  {plans.map((plan, index) => (
                     <th
-                      key={plan.id}
-                      className={`min-w-[150px] px-5 py-5 text-center sm:px-6 ${
-                        plan.featured
-                          ? "bg-white/[0.04]"
+                      key={plan}
+                      className={`w-[155px] px-4 py-5 text-center ${
+                        index === 1
+                          ? "bg-orange-500/[0.035]"
                           : ""
                       }`}
                     >
-                      <div className="text-sm font-semibold text-white">
-                        {plan.name}
-                      </div>
+                      <div className="flex flex-col items-center">
 
-                      {plan.featured && (
-                        <span className="mt-2 inline-block rounded-full bg-white px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.1em] text-black">
-                          Popular
+                        {index === 1 && (
+                          <span className="mb-2 rounded-full bg-orange-500 px-2.5 py-1 text-[8px] font-bold uppercase tracking-[0.1em] text-white">
+                            Popular
+                          </span>
+                        )}
+
+                        <span
+                          className={`text-xs font-semibold ${
+                            index === 1
+                              ? "text-orange-300"
+                              : "text-white/55"
+                          }`}
+                        >
+                          {plan}
                         </span>
-                      )}
+
+                      </div>
                     </th>
                   ))}
 
                 </tr>
+
               </thead>
 
               {/* Table Body */}
               <tbody>
 
-                {comparisonFeatures.map((feature, rowIndex) => (
-                  <tr
-                    key={feature.name}
-                    className={`border-b border-white/10 last:border-b-0 ${
-                      rowIndex % 2 === 1
-                        ? "bg-white/[0.01]"
-                        : ""
-                    }`}
-                  >
+                {comparisonRows.map((section) => (
+                  <React.Fragment key={section.category}>
 
-                    {/* Feature Name */}
-                    <td className="sticky left-0 z-10 bg-[#050505] px-5 py-4 text-sm font-medium text-white/60 sm:px-6">
-                      {feature.name}
-                    </td>
-
-                    {/* Feature Values */}
-                    {pricingPlans.map((plan, planIndex) => (
+                    {/* Category */}
+                    <tr>
                       <td
-                        key={plan.id}
-                        className={`px-5 py-4 text-center sm:px-6 ${
-                          plan.featured
-                            ? "bg-white/[0.025]"
-                            : ""
-                        }`}
+                        colSpan={5}
+                        className="border-y border-white/[0.06] bg-white/[0.015] px-5 py-3 sm:px-6"
                       >
-                        {feature.values[planIndex] ? (
-                          <span className="mx-auto flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-xs text-white/80">
-                            ✓
-                          </span>
-                        ) : (
-                          <span className="text-sm text-white/15">
-                            —
-                          </span>
-                        )}
+                        <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-orange-400/80">
+                          {section.category}
+                        </span>
                       </td>
+                    </tr>
+
+                    {/* Features */}
+                    {section.items.map((item) => (
+                      <tr
+                        key={item.name}
+                        className="border-b border-white/[0.05] transition-colors duration-200 hover:bg-white/[0.015]"
+                      >
+
+                        <td className="sticky left-0 z-10 bg-[#090909] px-5 py-4 sm:px-6">
+                          <span className="text-xs font-medium text-white/45">
+                            {item.name}
+                          </span>
+                        </td>
+
+                        {item.values.map((value, index) => (
+                          <td
+                            key={`${item.name}-${index}`}
+                            className={`px-4 py-4 ${
+                              index === 1
+                                ? "bg-orange-500/[0.02]"
+                                : ""
+                            }`}
+                          >
+                            <div className="flex justify-center">
+                              {renderValue(value)}
+                            </div>
+                          </td>
+                        ))}
+
+                      </tr>
                     ))}
 
-                  </tr>
+                  </React.Fragment>
                 ))}
 
               </tbody>
@@ -174,28 +307,67 @@ const ComparisonTable = () => {
             </table>
 
           </div>
+
+          {/* Scroll Hint */}
+          <div className="flex items-center justify-center gap-2 border-t border-white/[0.06] px-4 py-3 sm:hidden">
+
+            <span className="text-[9px] text-white/20">
+              ← Swipe to compare plans →
+            </span>
+
+          </div>
+
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        {/* Legend */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
 
-          <div>
-            <p className="text-sm font-medium text-white">
-              Still unsure which plan is right for you?
-            </p>
+          <div className="flex items-center gap-2">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[9px] text-orange-400">
+              ✓
+            </span>
 
-            <p className="mt-1 text-sm leading-6 text-white/40">
-              Talk to our team and we'll recommend the right starting point.
-            </p>
+            <span className="text-[10px] text-white/25">
+              Included
+            </span>
           </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-white/15">
+              —
+            </span>
+
+            <span className="text-[10px] text-white/25">
+              Not included
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="rounded-md border border-white/[0.07] bg-white/[0.025] px-2 py-0.5 text-[8px] text-white/40">
+              Advanced
+            </span>
+
+            <span className="text-[10px] text-white/25">
+              Service level
+            </span>
+          </div>
+
+        </div>
+
+        {/* CTA */}
+        <div className="mt-10 flex flex-col items-center text-center sm:mt-12">
+
+          <p className="text-sm text-white/30">
+            Still deciding which plan fits your business?
+          </p>
 
           <a
             href="#contact"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition-all duration-200 hover:bg-white/90 active:scale-[0.98] sm:w-auto"
+            className="group mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-orange-300"
           >
-            Get a recommendation
+            Talk to our team
 
-            <span className="transition-transform duration-200 group-hover:translate-x-1">
+            <span className="text-orange-400 transition-transform duration-200 group-hover:translate-x-1">
               →
             </span>
           </a>
