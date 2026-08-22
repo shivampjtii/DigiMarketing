@@ -1,221 +1,74 @@
 export const caseStudies = [
   {
     id: 1,
-    company: "Nexora Labs",
-    logo: "N",
-    category: "Digital Transformation",
-    industry: "Technology",
-
-    title: "Building a predictable B2B lead generation engine",
-
+    slug: "stronger-organic-growth-strategy",
+    title: "Building a Stronger Organic Growth Strategy",
+    category: "SEO",
+    client: "Growth-Focused Brand",
     description:
-      "Nexora Labs had strong technology and a growing product but relied heavily on referrals. Their digital channels were generating traffic without producing a consistent flow of qualified opportunities.",
-
-    strategy:
-      "We combined technical SEO, high-intent content, LinkedIn campaigns, paid acquisition, and conversion optimization into one connected B2B growth system.",
-
-    duration: "6 months",
-
-    results: [
-      {
-        value: "+184%",
-        label: "Qualified leads",
-      },
-      {
-        value: "3.4×",
-        label: "ROAS",
-      },
-      {
-        value: "-29%",
-        label: "Customer acquisition cost",
-      },
-      {
-        value: "+76%",
-        label: "Organic traffic",
-      },
-    ],
-
-    services: [
-      "SEO",
-      "Paid Advertising",
-      "Content",
-      "Conversion Optimization",
-    ],
+      "A focused SEO and content strategy designed to improve visibility, attract relevant traffic, and build sustainable organic growth.",
+    result: "Improved organic visibility",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     id: 2,
-    company: "Lumina Retail",
-    logo: "L",
-    category: "E-commerce Growth",
-    industry: "Retail",
-
-    title: "Turning digital traffic into profitable customers",
-
+    slug: "content-growth-channel",
+    title: "Turning Content Into a Consistent Growth Channel",
+    category: "Content",
+    client: "Digital Business",
     description:
-      "Lumina had strong product demand but struggled with expensive customer acquisition and inconsistent online conversions across its paid and organic channels.",
-
-    strategy:
-      "We rebuilt the acquisition funnel, improved product landing pages, introduced performance campaigns, and developed a content strategy focused on high-intent customers.",
-
-    duration: "4 months",
-
-    results: [
-      {
-        value: "+61%",
-        label: "Online conversions",
-      },
-      {
-        value: "2.8×",
-        label: "ROAS",
-      },
-      {
-        value: "-34%",
-        label: "Cost per acquisition",
-      },
-      {
-        value: "+72%",
-        label: "Organic traffic",
-      },
-    ],
-
-    services: [
-      "Paid Advertising",
-      "SEO",
-      "Content",
-      "CRO",
-    ],
+      "A structured content approach built around audience needs, search opportunities, and clear business objectives.",
+    result: "Stronger audience engagement",
+    image:
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     id: 3,
-    company: "Vertex Finance",
-    logo: "V",
-    category: "Brand & Demand Generation",
-    industry: "Financial Services",
-
-    title: "Creating trust and demand in a competitive market",
-
+    slug: "effective-social-media-presence",
+    title: "Creating a More Effective Social Media Presence",
+    category: "Social Media",
+    client: "Growing Consumer Brand",
     description:
-      "Vertex Finance had a strong service offering but lacked a differentiated digital presence. Their website and marketing campaigns were failing to communicate their value clearly.",
-
-    strategy:
-      "We developed a clearer brand positioning, redesigned their digital experience, created educational content, and launched targeted demand-generation campaigns.",
-
-    duration: "5 months",
-
-    results: [
-      {
-        value: "+126%",
-        label: "Inbound enquiries",
-      },
-      {
-        value: "+48%",
-        label: "Conversion rate",
-      },
-      {
-        value: "-31%",
-        label: "Cost per lead",
-      },
-      {
-        value: "+83%",
-        label: "Brand engagement",
-      },
-    ],
-
-    services: [
-      "Branding",
-      "Content Creation",
-      "Paid Advertising",
-      "Web Development",
-    ],
+      "A refined social media strategy focused on consistent messaging, stronger engagement, and meaningful audience interaction.",
+    result: "More consistent engagement",
+    image:
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     id: 4,
-    company: "Mosaic Living",
-    logo: "M",
-    category: "D2C Growth",
-    industry: "Lifestyle & Home",
-
-    title: "Scaling a lifestyle brand through performance marketing",
-
+    slug: "optimizing-campaign-performance",
+    title: "Optimizing Campaigns for Better Performance",
+    category: "Paid Advertising",
+    client: "E-Commerce Business",
     description:
-      "Mosaic Living had a growing customer base but struggled to scale advertising profitably. Their campaigns generated sales but lacked a clear system for testing and optimization.",
-
-    strategy:
-      "We rebuilt their paid media structure, introduced creative testing, improved landing pages, and connected campaign data with customer behavior insights.",
-
-    duration: "5 months",
-
-    results: [
-      {
-        value: "+93%",
-        label: "Qualified enquiries",
-      },
-      {
-        value: "3.1×",
-        label: "Marketing ROI",
-      },
-      {
-        value: "+57%",
-        label: "Conversion rate",
-      },
-      {
-        value: "-27%",
-        label: "Acquisition cost",
-      },
-    ],
-
-    services: [
-      "Paid Advertising",
-      "Creative Strategy",
-      "CRO",
-      "Analytics",
-    ],
+      "A performance-focused campaign strategy built to improve targeting, optimize spending, and generate better-quality opportunities.",
+    result: "More efficient campaign performance",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     id: 5,
-    company: "Orbital Technologies",
-    logo: "O",
-    category: "B2B Growth",
-    industry: "SaaS",
-
-    title: "Building an organic growth channel from the ground up",
-
+    slug: "redesigning-digital-experience",
+    title: "Redesigning the Digital Experience",
+    category: "Web Development",
+    client: "Service-Based Company",
     description:
-      "Orbital Technologies depended heavily on paid acquisition and wanted to build a sustainable organic channel capable of generating qualified traffic over the long term.",
-
-    strategy:
-      "We developed a technical SEO roadmap, topic clusters, product-led content, internal linking strategy, and performance measurement framework.",
-
-    duration: "8 months",
-
-    results: [
-      {
-        value: "+138%",
-        label: "Organic pipeline",
-      },
-      {
-        value: "+91%",
-        label: "Organic traffic",
-      },
-      {
-        value: "-38%",
-        label: "Paid dependency",
-      },
-      {
-        value: "+64%",
-        label: "Demo requests",
-      },
-    ],
-
-    services: [
-      "SEO",
-      "Content Strategy",
-      "Analytics",
-      "Conversion Optimization",
-    ],
+      "A modern website experience designed around clearer messaging, improved usability, and stronger conversion opportunities.",
+    result: "Improved user experience",
+    image:
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 6,
+    slug: "integrated-digital-growth-strategy",
+    title: "Combining Strategy Across Multiple Channels",
+    category: "Strategy",
+    client: "Ambitious Growing Business",
+    description:
+      "An integrated digital approach connecting strategy, content, SEO, and performance activity around shared business goals.",
+    result: "A clearer direction for growth",
+    image:
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
   },
 ];

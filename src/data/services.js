@@ -1,129 +1,97 @@
 export const services = [
   {
     id: 1,
-    number: "01",
-    icon: "⌁",
+    slug: "seo",
     title: "SEO",
+    shortTitle: "Search Engine Optimization",
     description:
-      "Build long-term organic visibility and attract high-intent customers who are actively searching for what your business offers.",
+      "Improve your search visibility and attract the right audience with a focused SEO strategy built around sustainable growth.",
     benefits: [
-      "Technical SEO & site optimization",
-      "Keyword & competitor research",
+      "Keyword and search opportunity research",
+      "On-page SEO optimization",
+      "Technical SEO improvements",
       "Content optimization",
-      "Organic growth tracking",
+      "Organic performance tracking",
     ],
-    cta: "Explore SEO",
   },
-
   {
     id: 2,
-    number: "02",
-    icon: "↗",
-    title: "Paid Advertising",
+    slug: "content-strategy",
+    title: "Content Strategy",
+    shortTitle: "Content That Supports Growth",
     description:
-      "Turn advertising spend into measurable growth with targeted campaigns built around acquisition, conversion, and return on investment.",
+      "Create useful, relevant content that connects with your audience and supports your broader marketing and business goals.",
     benefits: [
-      "Google & Meta Ads",
-      "Audience & campaign strategy",
-      "Landing page optimization",
-      "ROAS & conversion tracking",
+      "Content strategy and planning",
+      "Audience and topic research",
+      "Content calendars",
+      "Search-focused content opportunities",
+      "Content performance analysis",
     ],
-    cta: "Explore Paid Ads",
   },
-
   {
     id: 3,
-    number: "03",
-    icon: "◌",
-    title: "Social Media Marketing",
+    slug: "social-media",
+    title: "Social Media",
+    shortTitle: "Build a Stronger Social Presence",
     description:
-      "Build a recognizable social presence that captures attention, creates conversations, and turns followers into potential customers.",
+      "Develop a more consistent and effective social media presence that helps your brand connect with the right audience.",
     benefits: [
       "Social media strategy",
-      "Content planning & publishing",
-      "Community engagement",
-      "Performance analytics",
+      "Content planning",
+      "Platform optimization",
+      "Audience engagement",
+      "Performance reporting",
     ],
-    cta: "Explore Social",
   },
-
   {
     id: 4,
-    number: "04",
-    icon: "✦",
-    title: "Branding",
+    slug: "paid-advertising",
+    title: "Paid Advertising",
+    shortTitle: "Performance-Focused Campaigns",
     description:
-      "Create a distinctive brand identity that communicates your value clearly and builds trust across every customer touchpoint.",
+      "Run targeted advertising campaigns designed to generate meaningful insights, quality traffic, and measurable business outcomes.",
     benefits: [
-      "Brand strategy",
-      "Visual identity systems",
-      "Brand messaging",
-      "Digital brand guidelines",
+      "Campaign strategy",
+      "Audience targeting",
+      "Ad campaign optimization",
+      "Budget management",
+      "Performance analysis",
     ],
-    cta: "Explore Branding",
   },
-
   {
     id: 5,
-    number: "05",
-    icon: "✎",
-    title: "Content Creation",
-    description:
-      "Create strategic content that educates your audience, strengthens your authority, and supports your entire marketing funnel.",
-    benefits: [
-      "Content strategy",
-      "Copywriting & storytelling",
-      "Creative assets",
-      "Content distribution",
-    ],
-    cta: "Explore Content",
-  },
-
-  {
-    id: 6,
-    number: "06",
-    icon: "◈",
-    title: "Conversion Optimization",
-    description:
-      "Turn more of your existing traffic into leads and customers by removing friction from the customer journey.",
-    benefits: [
-      "Landing page optimization",
-      "Conversion funnel analysis",
-      "A/B testing",
-      "User journey optimization",
-    ],
-    cta: "Explore CRO",
-  },
-
-  {
-    id: 7,
-    number: "07",
-    icon: "⌘",
+    slug: "web-development",
     title: "Web Development",
+    shortTitle: "Websites Built for Your Business",
     description:
-      "Build fast, responsive, conversion-focused digital experiences designed to support your brand and business objectives.",
+      "Create modern, responsive digital experiences designed around usability, clear communication, and conversion opportunities.",
     benefits: [
       "Responsive website development",
-      "Conversion-focused UX",
+      "Modern user interfaces",
       "Performance optimization",
-      "Analytics integration",
+      "Conversion-focused design",
+      "Ongoing improvements",
     ],
-    cta: "Explore Web",
   },
-
   {
-    id: 8,
-    number: "08",
-    icon: "◉",
-    title: "Analytics & Growth",
+    id: 6,
+    slug: "digital-strategy",
+    title: "Digital Strategy",
+    shortTitle: "A Clearer Direction for Growth",
     description:
-      "Turn marketing data into actionable insights so you can understand what's working, what's not, and where to invest next.",
+      "Connect your digital activities through a clear strategy built around your business goals, audience, and growth opportunities.",
     benefits: [
-      "Marketing dashboards",
-      "Performance tracking",
-      "Customer insights",
-      "Growth recommendations",
+      "Digital presence analysis",
+      "Competitor research",
+      "Channel strategy",
+      "Growth opportunity identification",
+      "Strategic recommendations",
     ],
-    cta: "Explore Analytics",
   },
+];
+
+export const serviceCategories = [
+  "All Services",
+  ...services.map((service) => service.title),
 ];
