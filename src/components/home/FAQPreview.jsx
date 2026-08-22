@@ -36,7 +36,7 @@ const FAQPreview = () => {
           </div>
 
           {/* FAQ List */}
-          <div className="rounded-3xl border border-black/10 bg-white p-2 shadow-sm sm:p-4">
+          <div className="rounded-3xl border border-black/10 bg-white p-2 flex flex-col gap-3 shadow-sm sm:p-4">
             {homeFaqs.map((faq, index) => (
               <FAQAccordion
                 key={faq.question}
